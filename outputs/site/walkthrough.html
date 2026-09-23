@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Walkthrough · Growth Lab</title><link rel="stylesheet" href="style.css"><link rel="icon" href="favicon.svg"></head><body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><span class="mark">↗</span> GROWTH LAB</a><nav aria-label="Main navigation"><a href="index.html#evidence">Evidence</a><a href="index.html#simulator">Budget lab</a><a href="methodology.html">Methodology</a><a href="https://github.com/IamGRootMSE/growth-incrementality-lab">Code ↗</a></nav></header><main id="main" class="document"><h1 id="analysis-walkthrough">Analysis walkthrough</h1>
+<p>This is a readable companion to the executable pipeline, with results from the acquired Criteo v2.1 file. It is not a synthetic example. Run commands from the repository root after installing <code>requirements.lock</code> in Python 3.12.</p>
+<h2 id="1-acquire-and-verify">1. Acquire and verify</h2>
+<pre><code class="language-bash">python -m lab.acquire
+</code></pre>
+<p><code>lab/acquire.py</code> checks SHA-256 before the file can enter analysis. The official file contains 13,979,592 rows. The pipeline scans all rows with a common inclusion probability of 10%, yielding 1,399,703. It records full-source arm counts; no prefix sample or outcome enrichment is used.</p>
+<h2 id="2-audit-data-in-sql-and-python">2. Audit data in SQL and Python</h2>
+<pre><code class="language-sql">SELECT treatment, count(*) AS users, sum(conversion) AS conversions,
+       avg(conversion) AS conversion_rate
+FROM sample GROUP BY treatment ORDER BY treatment;
+</code></pre>
+<p>Executed sample: 209,613 controls with 411 conversions, and 1,190,090 treated users with 3,716 conversions. Missing cells: 0. Exact duplicate rows: 16,099. Repeated feature rows: 21,568. Controls with exposure: 0.</p>
+<p>Maximum absolute standardized feature imbalance: 0.0478. Validation assignment-prediction AUC: 0.5097. These diagnostics reveal no large measured mean imbalance, but cannot prove randomized exchangeability after privacy selection. Retain duplicate rows and group identical feature vectors for splitting and uncertainty.</p>
+<h2 id="3-freeze-partitions-and-compare-candidates">3. Freeze partitions and compare candidates</h2>
+<pre><code class="language-bash">python -m lab.pipeline
+</code></pre>
+<p>Train: 840,310; validation: 279,569; final test: 279,824. No feature group crosses partitions. Only <code>f0</code>–<code>f11</code> are predictors. Two regularized logistic response models form the baseline. Two histogram-boosted T-learners allow nonlinear interactions.</p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th style="text-align: right;">Validation AUQC (per 1,000)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linear</td>
+<td style="text-align: right;">0.464</td>
+</tr>
+<tr>
+<td>boosted_7</td>
+<td style="text-align: right;">0.397</td>
+</tr>
+<tr>
+<td>boosted_15</td>
+<td style="text-align: right;">0.308</td>
+</tr>
+</tbody>
+</table>
+<p>Selection: <strong>linear</strong>. Persisted before final outcome evaluation. A more flexible model did not justify replacing the simple baseline.</p>
+<h2 id="4-evaluate-the-frozen-policies">4. Evaluate the frozen policies</h2>
+<p>The evaluation set includes 41,706 controls (80 conversions) and 238,118 treated users (706 conversions). Overall conversion lift is 0.105 percentage points, 95% CI 0.057 to 0.152.</p>
+<p>Use arm-normalized policy outcomes, not a raw difference of conversion counts. At full reach all policies recover the overall effect; at zero reach all values are zero. The random policy is the depth times the overall effect. Independent SQL recomputation checks these endpoints and the 20% selected-policy estimate in <code>scripts/validate_outputs.py</code>.</p>
+<p>See the <a href="index.html#targeting">evidence charts</a> for cumulative gain, Qini and interval tables. Selected uplift equals the linear baseline because that model won validation. At 20% reach the paired difference versus propensity is -0.055 per 1,000 (95% CI -0.199 to 0.088). The correct conclusion is uncertainty about superiority, not a guaranteed uplift-model win.</p>
+<h2 id="5-translate-to-a-scenario">5. Translate to a scenario</h2>
+<pre><code class="language-text">100,000 eligible users × 0.001000928 gain per eligible user
+= 100.1 estimated extra conversions at 20% reach
+net value = extra conversions × $100 - 20,000 treated users × $0.20
+</code></pre>
+<p>The <a href="index.html#simulator">budget lab</a> carries the measured interval into the scenario and caps reach at the requested budget. This assumes future users behave like the benchmark; it does not measure actual revenue.</p>
+<h2 id="6-reproduce-the-checks-and-build">6. Reproduce the checks and build</h2>
+<pre><code class="language-bash">python -m pytest -q
+python scripts/validate_outputs.py
+python scripts/build_site.py
+python -m http.server 8000 --directory outputs/site
+</code></pre>
+<p>For a faster execution check after acquisition, run <code>python -m lab.pipeline --smoke</code>. Smoke outputs go to <code>work/smoke-results</code> and never overwrite portfolio results. The first smoke sample still scans the complete compressed source; subsequent smoke runs reuse its verified cache. Browser checks are described in the README.</p></main><footer>Independent project · Criteo / Diemert et al. (2018) · <a href="provenance.html">Data provenance</a> · Data-derived reports: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. No endorsement.</footer></body></html>

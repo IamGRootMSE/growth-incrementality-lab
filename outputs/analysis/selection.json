@@ -1,0 +1,9 @@
+{
+  "selected": "linear",
+  "validation_auqc": {
+    "linear": 0.00046352690884854945,
+    "boosted_7": 0.000397433071294215,
+    "boosted_15": 0.0003076638113087239
+  },
+  "criterion": "Maximum validation area above random targeting, 21 fixed depths; no test outcomes used."
+}

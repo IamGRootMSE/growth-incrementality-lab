@@ -1,0 +1,1428 @@
+{
+  "schema_version": 1,
+  "mode": "empirical",
+  "seed": 20260923,
+  "provenance": {
+    "source_url": "https://huggingface.co/datasets/criteo/criteo-uplift/resolve/main/criteo-research-uplift-v2.1.csv.gz",
+    "source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc",
+    "source_rows": 13979592,
+    "source_arm_counts": {
+      "0": 2096937,
+      "1": 11882655
+    },
+    "sampling_probability": 0.1,
+    "seed": 20260923,
+    "sample_rows": 1399703,
+    "sample_sha256": "10bc12113427658b7e2863376ab1d0c3a45ec9c1281025313b9841b0396feb93",
+    "method": "Seeded Bernoulli sampling over every source row, independent of arm, features and outcome; no prefix truncation."
+  },
+  "quality": {
+    "rows": 1399703,
+    "missing_cells": 0,
+    "exact_duplicate_rows": 16099,
+    "repeated_feature_rows": 21568,
+    "control_exposures": 0,
+    "arms": [
+      {
+        "treatment": 0,
+        "users": 209613,
+        "conversions": 411.0,
+        "conversion_rate": 0.0019607562508050552,
+        "visit_rate": 0.03864741213569769,
+        "exposure_rate": 0.0
+      },
+      {
+        "treatment": 1,
+        "users": 1190090,
+        "conversions": 3716.0,
+        "conversion_rate": 0.0031224529237284574,
+        "visit_rate": 0.04852490147803948,
+        "exposure_rate": 0.03585443117747397
+      }
+    ],
+    "standardized_mean_differences": {
+      "f0": -0.0056230551029763185,
+      "f1": 0.02412003021382572,
+      "f2": -0.008699626907653251,
+      "f3": -0.04779705331417263,
+      "f4": 0.010673897178828148,
+      "f5": -0.026520479139710437,
+      "f6": -0.041443380034855815,
+      "f7": 0.017307659304978913,
+      "f8": -0.018017715566342397,
+      "f9": 0.021743294145238377,
+      "f10": 0.013472186104782685,
+      "f11": -0.006351387362496309
+    },
+    "max_absolute_smd": 0.04779705331417263
+  },
+  "selection": {
+    "selected": "linear",
+    "validation_auqc": {
+      "linear": 0.00046352690884854945,
+      "boosted_7": 0.000397433071294215,
+      "boosted_15": 0.0003076638113087239
+    },
+    "criterion": "Maximum validation area above random targeting, 21 fixed depths; no test outcomes used."
+  },
+  "splits": {
+    "train": {
+      "rows": 840310,
+      "treated": 714236,
+      "conversions": 2515,
+      "groups": 827457
+    },
+    "validation": {
+      "rows": 279569,
+      "treated": 237736,
+      "conversions": 826,
+      "groups": 275269
+    },
+    "test": {
+      "rows": 279824,
+      "treated": 238118,
+      "conversions": 786,
+      "groups": 275409
+    }
+  },
+  "test_arm_counts": {
+    "0": 41706,
+    "1": 238118
+  },
+  "test_arm_conversions": {
+    "0": 80,
+    "1": 706
+  },
+  "assignment_validation_auc": 0.509690526006714,
+  "ate": {
+    "estimate": 0.0010467273246099625,
+    "se": 0.00024149500871980113,
+    "low": 0.0005733971075191522,
+    "high": 0.0015200575417007728
+  },
+  "evaluation_treatment_probability": 0.8509563153982503,
+  "curves": {
+    "random": {
+      "points": [
+        {
+          "depth": 0.0,
+          "estimate": 0.0,
+          "se": 0.0,
+          "low": 0.0,
+          "high": 0.0,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 0.0,
+          "policy_weighted_control_events": 0.0
+        },
+        {
+          "depth": 0.05000000000000003,
+          "estimate": 5.2336366230498125e-05,
+          "se": 1.2074750435990057e-05,
+          "low": 2.8669855375957615e-05,
+          "high": 7.600287708503864e-05,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 35.3,
+          "policy_weighted_control_events": 4.0
+        },
+        {
+          "depth": 0.10000000000000006,
+          "estimate": 0.00010467273246099625,
+          "se": 2.4149500871980114e-05,
+          "low": 5.733971075191523e-05,
+          "high": 0.00015200575417007728,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 70.6,
+          "policy_weighted_control_events": 8.0
+        },
+        {
+          "depth": 0.15000000000000002,
+          "estimate": 0.00015700909869149443,
+          "se": 3.622425130797017e-05,
+          "low": 8.600956612787289e-05,
+          "high": 0.00022800863125511597,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 105.90000000000002,
+          "policy_weighted_control_events": 12.000000000000002
+        },
+        {
+          "depth": 0.20000000000000012,
+          "estimate": 0.0002093454649219925,
+          "se": 4.829900174396023e-05,
+          "low": 0.00011467942150383046,
+          "high": 0.00030401150834015456,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 141.2,
+          "policy_weighted_control_events": 16.0
+        },
+        {
+          "depth": 0.25,
+          "estimate": 0.0002616818311524906,
+          "se": 6.037375217995028e-05,
+          "low": 0.00014334927687978806,
+          "high": 0.0003800143854251932,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 176.5,
+          "policy_weighted_control_events": 20.0
+        },
+        {
+          "depth": 0.30000000000000004,
+          "estimate": 0.00031401819738298886,
+          "se": 7.244850261594034e-05,
+          "low": 0.00017201913225574578,
+          "high": 0.00045601726251023194,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 211.80000000000004,
+          "policy_weighted_control_events": 24.000000000000004
+        },
+        {
+          "depth": 0.3499999999999998,
+          "estimate": 0.000366354563613487,
+          "se": 8.452325305193039e-05,
+          "low": 0.00020068898763170342,
+          "high": 0.0005320201395952706,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 247.1,
+          "policy_weighted_control_events": 28.0
+        },
+        {
+          "depth": 0.40000000000000024,
+          "estimate": 0.000418690929843985,
+          "se": 9.659800348792046e-05,
+          "low": 0.00022935884300766092,
+          "high": 0.0006080230166803091,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 282.4,
+          "policy_weighted_control_events": 32.0
+        },
+        {
+          "depth": 0.4499999999999997,
+          "estimate": 0.0004710272960744826,
+          "se": 0.00010867275392391054,
+          "low": 0.00025802869838361796,
+          "high": 0.0006840258937653472,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 317.69999999999993,
+          "policy_weighted_control_events": 36.00000000000001
+        },
+        {
+          "depth": 0.5,
+          "estimate": 0.0005233636623049813,
+          "se": 0.00012074750435990057,
+          "low": 0.0002866985537595761,
+          "high": 0.0007600287708503864,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 353.0,
+          "policy_weighted_control_events": 40.0
+        },
+        {
+          "depth": 0.5500000000000003,
+          "estimate": 0.0005757000285354799,
+          "se": 0.00013282225479589063,
+          "low": 0.0003153684091355343,
+          "high": 0.0008360316479354255,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 388.3000000000001,
+          "policy_weighted_control_events": 44.0
+        },
+        {
+          "depth": 0.6000000000000001,
+          "estimate": 0.0006280363947659777,
+          "se": 0.0001448970052318807,
+          "low": 0.00034403826451149156,
+          "high": 0.0009120345250204639,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 423.6000000000001,
+          "policy_weighted_control_events": 48.00000000000001
+        },
+        {
+          "depth": 0.6499999999999998,
+          "estimate": 0.0006803727609964755,
+          "se": 0.0001569717556678707,
+          "low": 0.00037270811988744895,
+          "high": 0.000988037402105502,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 458.9,
+          "policy_weighted_control_events": 52.00000000000001
+        },
+        {
+          "depth": 0.6999999999999996,
+          "estimate": 0.000732709127226974,
+          "se": 0.00016904650610386079,
+          "low": 0.00040137797526340683,
+          "high": 0.0010640402791905412,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 494.2,
+          "policy_weighted_control_events": 56.0
+        },
+        {
+          "depth": 0.75,
+          "estimate": 0.0007850454934574722,
+          "se": 0.00018112125653985077,
+          "low": 0.0004300478306393647,
+          "high": 0.0011400431562755796,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 529.5,
+          "policy_weighted_control_events": 60.0
+        },
+        {
+          "depth": 0.8000000000000005,
+          "estimate": 0.00083738185968797,
+          "se": 0.0001931960069758409,
+          "low": 0.00045871768601532184,
+          "high": 0.0012160460333606182,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 564.8,
+          "policy_weighted_control_events": 64.0
+        },
+        {
+          "depth": 0.8500000000000005,
+          "estimate": 0.0008897182259184687,
+          "se": 0.00020527075741183097,
+          "low": 0.00048738754139128,
+          "high": 0.0012920489104456573,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 600.1000000000001,
+          "policy_weighted_control_events": 68.0
+        },
+        {
+          "depth": 0.8999999999999994,
+          "estimate": 0.0009420545921489652,
+          "se": 0.0002173455078478211,
+          "low": 0.0005160573967672359,
+          "high": 0.0013680517875306944,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 635.3999999999999,
+          "policy_weighted_control_events": 72.00000000000001
+        },
+        {
+          "depth": 0.9499999999999995,
+          "estimate": 0.0009943909583794651,
+          "se": 0.00022942025828381101,
+          "low": 0.0005447272521431955,
+          "high": 0.0014440546646157348,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 670.7,
+          "policy_weighted_control_events": 75.99999999999999
+        },
+        {
+          "depth": 1.0,
+          "estimate": 0.0010467273246099625,
+          "se": 0.00024149500871980113,
+          "low": 0.0005733971075191522,
+          "high": 0.0015200575417007728,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 706.0,
+          "policy_weighted_control_events": 80.0
+        }
+      ],
+      "auqc": {
+        "estimate": 0.0,
+        "se": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      }
+    },
+    "propensity": {
+      "points": [
+        {
+          "depth": 0.0,
+          "estimate": 0.0,
+          "se": 0.0,
+          "low": 0.0,
+          "high": 0.0,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 0.0,
+          "policy_weighted_control_events": 0.0
+        },
+        {
+          "depth": 0.04999928526502373,
+          "estimate": 0.0009689482547502698,
+          "se": 0.00021261596673665116,
+          "low": 0.0005522209599464335,
+          "high": 0.001385675549554106,
+          "qini": {
+            "estimate": 0.0009166126366524012,
+            "se": 0.0002020717566881066,
+            "low": 0.0005205519935437122,
+            "high": 0.00131267327976109
+          },
+          "policy_weighted_treated_events": 579.0,
+          "policy_weighted_control_events": 61.0
+        },
+        {
+          "depth": 0.09999857053004746,
+          "estimate": 0.0010698810023570407,
+          "se": 0.00022436689258273568,
+          "low": 0.0006301218928948788,
+          "high": 0.0015096401118192028,
+          "qini": {
+            "estimate": 0.0009652097661613035,
+            "se": 0.00020213504555820796,
+            "low": 0.0005690250768672158,
+            "high": 0.0013613944554553912
+          },
+          "policy_weighted_treated_events": 643.0,
+          "policy_weighted_control_events": 68.0
+        },
+        {
+          "depth": 0.15000142946995254,
+          "estimate": 0.0011424944029127249,
+          "se": 0.00022653248046684152,
+          "low": 0.0006984907411977155,
+          "high": 0.0015864980646277341,
+          "qini": {
+            "estimate": 0.0009854838079559713,
+            "se": 0.00019297067888479643,
+            "low": 0.0006072612773417703,
+            "high": 0.0013637063385701725
+          },
+          "policy_weighted_treated_events": 666.0,
+          "policy_weighted_control_events": 69.0
+        },
+        {
+          "depth": 0.20000071473497627,
+          "estimate": 0.0010562043642243107,
+          "se": 0.00023307074333507052,
+          "low": 0.0005993857072875725,
+          "high": 0.0015130230211610489,
+          "qini": {
+            "estimate": 0.0008468581511696887,
+            "se": 0.0001868930220687789,
+            "low": 0.00048054782791488206,
+            "high": 0.0012131684744244953
+          },
+          "policy_weighted_treated_events": 674.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.25,
+          "estimate": 0.0010220686547884653,
+          "se": 0.00023706179751073613,
+          "low": 0.0005574275316674224,
+          "high": 0.0014867097779095082,
+          "qini": {
+            "estimate": 0.0007603868236359747,
+            "se": 0.0001781749402354273,
+            "low": 0.0004111639407745372,
+            "high": 0.0011096097064974121
+          },
+          "policy_weighted_treated_events": 683.0,
+          "policy_weighted_control_events": 77.0
+        },
+        {
+          "depth": 0.29999928526502373,
+          "estimate": 0.0010514658444171366,
+          "se": 0.00023732056016645742,
+          "low": 0.00058631754649088,
+          "high": 0.001516614142343393,
+          "qini": {
+            "estimate": 0.0007374483951667774,
+            "se": 0.00016667231565094387,
+            "low": 0.0004107706564909274,
+            "high": 0.0010641261338426274
+          },
+          "policy_weighted_treated_events": 690.0,
+          "policy_weighted_control_events": 77.0
+        },
+        {
+          "depth": 0.34999857053004746,
+          "estimate": 0.0010556654429355185,
+          "se": 0.00023735750201853525,
+          "low": 0.0005904447389791893,
+          "high": 0.0015208861468918476,
+          "qini": {
+            "estimate": 0.0006893123755872906,
+            "se": 0.0001550761879431819,
+            "low": 0.00038536304721865407,
+            "high": 0.0009932617039559272
+          },
+          "policy_weighted_treated_events": 691.0,
+          "policy_weighted_control_events": 77.0
+        },
+        {
+          "depth": 0.40000142946995254,
+          "estimate": 0.0010442868731235697,
+          "se": 0.0002386712464487553,
+          "low": 0.0005764912300840093,
+          "high": 0.0015120825161631301,
+          "qini": {
+            "estimate": 0.0006255944470143257,
+            "se": 0.0001439655635105981,
+            "low": 0.0003434219425335534,
+            "high": 0.0009077669514950979
+          },
+          "policy_weighted_treated_events": 694.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.45000071473497627,
+          "estimate": 0.0010610852671970963,
+          "se": 0.00023881813701649726,
+          "low": 0.0005930017186447617,
+          "high": 0.001529168815749431,
+          "qini": {
+            "estimate": 0.0005900572229899836,
+            "se": 0.00013234591751059178,
+            "low": 0.0003306592246692238,
+            "high": 0.0008494552213107434
+          },
+          "policy_weighted_treated_events": 698.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.5,
+          "estimate": 0.0010652848657154781,
+          "se": 0.0002388548447901809,
+          "low": 0.0005971293699267236,
+          "high": 0.0015334403615042326,
+          "qini": {
+            "estimate": 0.0005419212034104969,
+            "se": 0.00012075791418039555,
+            "low": 0.0003052356916169216,
+            "high": 0.0007786067152040722
+          },
+          "policy_weighted_treated_events": 699.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.5499992852650237,
+          "estimate": 0.0010652848657154781,
+          "se": 0.0002388548447901809,
+          "low": 0.0005971293699267236,
+          "high": 0.0015334403615042326,
+          "qini": {
+            "estimate": 0.0004895855853126283,
+            "se": 0.00010926751031498974,
+            "low": 0.0002754212650952484,
+            "high": 0.0007037499055300082
+          },
+          "policy_weighted_treated_events": 699.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.5999985705300475,
+          "estimate": 0.001049706697385148,
+          "se": 0.00024012382639665837,
+          "low": 0.0005790639976476976,
+          "high": 0.0015203493971225983,
+          "qini": {
+            "estimate": 0.0004216717988844295,
+            "se": 9.72878952720967e-05,
+            "low": 0.00023098752415111998,
+            "high": 0.0006123560736177391
+          },
+          "policy_weighted_treated_events": 701.0,
+          "policy_weighted_control_events": 79.0
+        },
+        {
+          "depth": 0.6500014294699525,
+          "estimate": 0.001049706697385148,
+          "se": 0.00024012382639665837,
+          "low": 0.0005790639976476976,
+          "high": 0.0015203493971225983,
+          "qini": {
+            "estimate": 0.0003693324401234133,
+            "se": 8.569709965438924e-05,
+            "low": 0.0002013661248008104,
+            "high": 0.0005372987554460161
+          },
+          "policy_weighted_treated_events": 701.0,
+          "policy_weighted_control_events": 79.0
+        },
+        {
+          "depth": 0.7000007147349763,
+          "estimate": 0.0010539062959035294,
+          "se": 0.0002401603336521848,
+          "low": 0.0005831920419452471,
+          "high": 0.0015246205498618117,
+          "qini": {
+            "estimate": 0.0003211964205439261,
+            "se": 7.421400805757325e-05,
+            "low": 0.00017573696475108256,
+            "high": 0.0004666558763367697
+          },
+          "policy_weighted_treated_events": 702.0,
+          "policy_weighted_control_events": 79.0
+        },
+        {
+          "depth": 0.75,
+          "estimate": 0.0010581058944219113,
+          "se": 0.00024019683505930393,
+          "low": 0.0005873200977056755,
+          "high": 0.001528891691138147,
+          "qini": {
+            "estimate": 0.0002730604009644394,
+            "se": 6.292470796863974e-05,
+            "low": 0.0001497279733459055,
+            "high": 0.00039639282858297325
+          },
+          "policy_weighted_treated_events": 703.0,
+          "policy_weighted_control_events": 79.0
+        },
+        {
+          "depth": 0.7999992852650237,
+          "estimate": 0.0010623054929402927,
+          "se": 0.0002402333306206818,
+          "low": 0.0005914481649237564,
+          "high": 0.001533162820956829,
+          "qini": {
+            "estimate": 0.0002249243813849522,
+            "se": 5.195567853547348e-05,
+            "low": 0.00012309125145542417,
+            "high": 0.00032675751131448023
+          },
+          "policy_weighted_treated_events": 704.0,
+          "policy_weighted_control_events": 79.0
+        },
+        {
+          "depth": 0.8499985705300475,
+          "estimate": 0.0010383281275731992,
+          "se": 0.0002414223945241049,
+          "low": 0.0005651402343059535,
+          "high": 0.001511516020840445,
+          "qini": {
+            "estimate": 0.00014861139791999013,
+            "se": 3.656423696353359e-05,
+            "low": 7.69454934714643e-05,
+            "high": 0.00022027730236851597
+          },
+          "policy_weighted_treated_events": 704.0,
+          "policy_weighted_control_events": 80.0
+        },
+        {
+          "depth": 0.9000014294699525,
+          "estimate": 0.0010383281275731992,
+          "se": 0.0002414223945241049,
+          "low": 0.0005651402343059535,
+          "high": 0.001511516020840445,
+          "qini": {
+            "estimate": 9.627203915897392e-05,
+            "se": 2.4726927424473783e-05,
+            "low": 4.7807261407005307e-05,
+            "high": 0.00014473681691094253
+          },
+          "policy_weighted_treated_events": 704.0,
+          "policy_weighted_control_events": 80.0
+        },
+        {
+          "depth": 0.9500007147349763,
+          "estimate": 0.0010383281275731992,
+          "se": 0.0002414223945241049,
+          "low": 0.0005651402343059535,
+          "high": 0.001511516020840445,
+          "qini": {
+            "estimate": 4.3936421061105315e-05,
+            "se": 1.3324848513384006e-05,
+            "low": 1.7819717974872663e-05,
+            "high": 7.005312414733796e-05
+          },
+          "policy_weighted_treated_events": 704.0,
+          "policy_weighted_control_events": 80.0
+        },
+        {
+          "depth": 1.0,
+          "estimate": 0.0010467273246099625,
+          "se": 0.00024149500871980113,
+          "low": 0.0005733971075191522,
+          "high": 0.0015200575417007728,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 706.0,
+          "policy_weighted_control_events": 80.0
+        }
+      ],
+      "auqc": {
+        "estimate": 0.0005023737857549037,
+        "se": 0.00010869403953821447,
+        "low": 0.0002893334682600034,
+        "high": 0.000715414103249804
+      }
+    },
+    "baseline": {
+      "points": [
+        {
+          "depth": 0.0,
+          "estimate": 0.0,
+          "se": 0.0,
+          "low": 0.0,
+          "high": 0.0,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 0.0,
+          "policy_weighted_control_events": 0.0
+        },
+        {
+          "depth": 0.04999928526502373,
+          "estimate": 0.0009987419825021222,
+          "se": 0.00019645379526054405,
+          "low": 0.000613692543791456,
+          "high": 0.0013837914212127885,
+          "qini": {
+            "estimate": 0.0009464063644042536,
+            "se": 0.0001867706222963153,
+            "low": 0.0005803359447034756,
+            "high": 0.0013124767841050317
+          },
+          "policy_weighted_treated_events": 529.0,
+          "policy_weighted_control_events": 51.0
+        },
+        {
+          "depth": 0.09999857053004746,
+          "estimate": 0.0009755883047550444,
+          "se": 0.00021582427105924917,
+          "low": 0.0005525727334789161,
+          "high": 0.0013986038760311727,
+          "qini": {
+            "estimate": 0.0008709170685593072,
+            "se": 0.00019455425117026595,
+            "low": 0.000489590736265586,
+            "high": 0.0012522434008530284
+          },
+          "policy_weighted_treated_events": 592.0,
+          "policy_weighted_control_events": 63.0
+        },
+        {
+          "depth": 0.15000142946995254,
+          "estimate": 0.001049421931053925,
+          "se": 0.0002196253586941545,
+          "low": 0.0006189562280133822,
+          "high": 0.0014798876340944677,
+          "qini": {
+            "estimate": 0.0008924113360971715,
+            "se": 0.0001873018819139256,
+            "low": 0.0005252996475458773,
+            "high": 0.0012595230246484658
+          },
+          "policy_weighted_treated_events": 621.0,
+          "policy_weighted_control_events": 65.0
+        },
+        {
+          "depth": 0.20000071473497627,
+          "estimate": 0.0010009282790309458,
+          "se": 0.00022671304747380133,
+          "low": 0.0005565707059822951,
+          "high": 0.0014452858520795965,
+          "qini": {
+            "estimate": 0.0007915820659763238,
+            "se": 0.00018214598800839267,
+            "low": 0.0004345759294798742,
+            "high": 0.0011485882024727734
+          },
+          "policy_weighted_treated_events": 638.0,
+          "policy_weighted_control_events": 70.0
+        },
+        {
+          "depth": 0.25,
+          "estimate": 0.0009512144012647698,
+          "se": 0.00023212815017572834,
+          "low": 0.0004962432269203423,
+          "high": 0.0014061855756091974,
+          "qini": {
+            "estimate": 0.0006895325701122792,
+            "se": 0.00017490326443502158,
+            "low": 0.0003467221718196369,
+            "high": 0.0010323429684049215
+          },
+          "policy_weighted_treated_events": 649.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.29999928526502373,
+          "estimate": 0.0009680127953382964,
+          "se": 0.00023227923514222983,
+          "low": 0.000512745494459526,
+          "high": 0.0014232800962170667,
+          "qini": {
+            "estimate": 0.0006539953460879372,
+            "se": 0.00016381543725857447,
+            "low": 0.0003329170890611312,
+            "high": 0.0009750736031147432
+          },
+          "policy_weighted_treated_events": 653.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.34999857053004746,
+          "estimate": 0.0009932103864485863,
+          "se": 0.00023250566922182353,
+          "low": 0.0005374992747738121,
+          "high": 0.0014489214981233604,
+          "qini": {
+            "estimate": 0.0006268573191003584,
+            "se": 0.0001528653836632737,
+            "low": 0.00032724116712034196,
+            "high": 0.0009264734710803749
+          },
+          "policy_weighted_treated_events": 659.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.40000142946995254,
+          "estimate": 0.0010100087805221128,
+          "se": 0.00023265649665420025,
+          "low": 0.0005540020470798804,
+          "high": 0.0014660155139643452,
+          "qini": {
+            "estimate": 0.0005913163544128688,
+            "se": 0.00014199814974884156,
+            "low": 0.00031299998090513934,
+            "high": 0.0008696327279205982
+          },
+          "policy_weighted_treated_events": 663.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.45000071473497627,
+          "estimate": 0.0010280274003388358,
+          "se": 0.0002342590247575569,
+          "low": 0.0005688797118140243,
+          "high": 0.0014871750888636472,
+          "qini": {
+            "estimate": 0.0005569993561317231,
+            "se": 0.00013154308667302788,
+            "low": 0.0002991749062525885,
+            "high": 0.0008148238060108578
+          },
+          "policy_weighted_treated_events": 673.0,
+          "policy_weighted_control_events": 75.0
+        },
+        {
+          "depth": 0.5,
+          "estimate": 0.001013669457751702,
+          "se": 0.00023698781069471253,
+          "low": 0.0005491733487900654,
+          "high": 0.0014781655667133386,
+          "qini": {
+            "estimate": 0.0004903057954467208,
+            "se": 0.00012076588581791683,
+            "low": 0.00025360465924360376,
+            "high": 0.0007270069316498378
+          },
+          "policy_weighted_treated_events": 681.0,
+          "policy_weighted_control_events": 77.0
+        },
+        {
+          "depth": 0.5499992852650237,
+          "estimate": 0.0010022908879397533,
+          "se": 0.00023830360275569641,
+          "low": 0.0005352158265385883,
+          "high": 0.0014693659493409182,
+          "qini": {
+            "estimate": 0.0004265916075369034,
+            "se": 0.00010939154504247354,
+            "low": 0.0002121841792536553,
+            "high": 0.0006409990358201515
+          },
+          "policy_weighted_treated_events": 684.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.5999985705300475,
+          "estimate": 0.0010064904864581351,
+          "se": 0.00023834039400352035,
+          "low": 0.0005393433142112352,
+          "high": 0.001473637658705035,
+          "qini": {
+            "estimate": 0.0003784555879574167,
+            "se": 9.817243728163558e-05,
+            "low": 0.00018603761088541095,
+            "high": 0.0005708735650294224
+          },
+          "policy_weighted_treated_events": 685.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.6500014294699525,
+          "estimate": 0.0010106900849765166,
+          "se": 0.00023837717927096852,
+          "low": 0.0005434708136054183,
+          "high": 0.001477909356347615,
+          "qini": {
+            "estimate": 0.0003303158277147819,
+            "se": 8.716124918647124e-05,
+            "low": 0.00015947977930929827,
+            "high": 0.0005011518761202656
+          },
+          "policy_weighted_treated_events": 686.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.7000007147349763,
+          "estimate": 0.0010148896834948984,
+          "se": 0.00023841395856080916,
+          "low": 0.0005475983247157125,
+          "high": 0.0014821810422740844,
+          "qini": {
+            "estimate": 0.00028217980813529514,
+            "se": 7.644978055404574e-05,
+            "low": 0.0001323382382493655,
+            "high": 0.00043202137802122477
+          },
+          "policy_weighted_treated_events": 687.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.75,
+          "estimate": 0.0010190892820132798,
+          "se": 0.00023845073187580833,
+          "low": 0.0005517258475366955,
+          "high": 0.001486452716489864,
+          "qini": {
+            "estimate": 0.00023404378855580797,
+            "se": 6.618253781739707e-05,
+            "low": 0.0001043260144337097,
+            "high": 0.0003637615626779062
+          },
+          "policy_weighted_treated_events": 688.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.7999992852650237,
+          "estimate": 0.0010190892820132798,
+          "se": 0.00023845073187580833,
+          "low": 0.0005517258475366955,
+          "high": 0.001486452716489864,
+          "qini": {
+            "estimate": 0.00018170817045793936,
+            "se": 5.669534002395923e-05,
+            "low": 7.058530401097928e-05,
+            "high": 0.00029283103690489945
+          },
+          "policy_weighted_treated_events": 688.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.8499985705300475,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 0.00013357215087845262,
+            "se": 4.824756071212378e-05,
+            "low": 3.900693188269002e-05,
+            "high": 0.00022813736987421524
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.9000014294699525,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 8.12327921174364e-05,
+            "se": 4.175466787505333e-05,
+            "low": -6.063569176681236e-07,
+            "high": 0.00016307194115254092
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.9500007147349763,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 2.8897174019567803e-05,
+            "se": 3.808832510391504e-05,
+            "low": -4.575594318410567e-05,
+            "high": 0.00010355029122324128
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 1.0,
+          "estimate": 0.0010467273246099625,
+          "se": 0.00024149500871980113,
+          "low": 0.0005733971075191522,
+          "high": 0.0015200575417007728,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 706.0,
+          "policy_weighted_control_events": 80.0
+        }
+      ],
+      "auqc": {
+        "estimate": 0.0004593660241851272,
+        "se": 0.0001060593997057771,
+        "low": 0.0002514896007618041,
+        "high": 0.0006672424476084503
+      }
+    },
+    "uplift": {
+      "points": [
+        {
+          "depth": 0.0,
+          "estimate": 0.0,
+          "se": 0.0,
+          "low": 0.0,
+          "high": 0.0,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 0.0,
+          "policy_weighted_control_events": 0.0
+        },
+        {
+          "depth": 0.04999928526502373,
+          "estimate": 0.0009987419825021222,
+          "se": 0.00019645379526054405,
+          "low": 0.000613692543791456,
+          "high": 0.0013837914212127885,
+          "qini": {
+            "estimate": 0.0009464063644042536,
+            "se": 0.0001867706222963153,
+            "low": 0.0005803359447034756,
+            "high": 0.0013124767841050317
+          },
+          "policy_weighted_treated_events": 529.0,
+          "policy_weighted_control_events": 51.0
+        },
+        {
+          "depth": 0.09999857053004746,
+          "estimate": 0.0009755883047550444,
+          "se": 0.00021582427105924917,
+          "low": 0.0005525727334789161,
+          "high": 0.0013986038760311727,
+          "qini": {
+            "estimate": 0.0008709170685593072,
+            "se": 0.00019455425117026595,
+            "low": 0.000489590736265586,
+            "high": 0.0012522434008530284
+          },
+          "policy_weighted_treated_events": 592.0,
+          "policy_weighted_control_events": 63.0
+        },
+        {
+          "depth": 0.15000142946995254,
+          "estimate": 0.001049421931053925,
+          "se": 0.0002196253586941545,
+          "low": 0.0006189562280133822,
+          "high": 0.0014798876340944677,
+          "qini": {
+            "estimate": 0.0008924113360971715,
+            "se": 0.0001873018819139256,
+            "low": 0.0005252996475458773,
+            "high": 0.0012595230246484658
+          },
+          "policy_weighted_treated_events": 621.0,
+          "policy_weighted_control_events": 65.0
+        },
+        {
+          "depth": 0.20000071473497627,
+          "estimate": 0.0010009282790309458,
+          "se": 0.00022671304747380133,
+          "low": 0.0005565707059822951,
+          "high": 0.0014452858520795965,
+          "qini": {
+            "estimate": 0.0007915820659763238,
+            "se": 0.00018214598800839267,
+            "low": 0.0004345759294798742,
+            "high": 0.0011485882024727734
+          },
+          "policy_weighted_treated_events": 638.0,
+          "policy_weighted_control_events": 70.0
+        },
+        {
+          "depth": 0.25,
+          "estimate": 0.0009512144012647698,
+          "se": 0.00023212815017572834,
+          "low": 0.0004962432269203423,
+          "high": 0.0014061855756091974,
+          "qini": {
+            "estimate": 0.0006895325701122792,
+            "se": 0.00017490326443502158,
+            "low": 0.0003467221718196369,
+            "high": 0.0010323429684049215
+          },
+          "policy_weighted_treated_events": 649.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.29999928526502373,
+          "estimate": 0.0009680127953382964,
+          "se": 0.00023227923514222983,
+          "low": 0.000512745494459526,
+          "high": 0.0014232800962170667,
+          "qini": {
+            "estimate": 0.0006539953460879372,
+            "se": 0.00016381543725857447,
+            "low": 0.0003329170890611312,
+            "high": 0.0009750736031147432
+          },
+          "policy_weighted_treated_events": 653.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.34999857053004746,
+          "estimate": 0.0009932103864485863,
+          "se": 0.00023250566922182353,
+          "low": 0.0005374992747738121,
+          "high": 0.0014489214981233604,
+          "qini": {
+            "estimate": 0.0006268573191003584,
+            "se": 0.0001528653836632737,
+            "low": 0.00032724116712034196,
+            "high": 0.0009264734710803749
+          },
+          "policy_weighted_treated_events": 659.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.40000142946995254,
+          "estimate": 0.0010100087805221128,
+          "se": 0.00023265649665420025,
+          "low": 0.0005540020470798804,
+          "high": 0.0014660155139643452,
+          "qini": {
+            "estimate": 0.0005913163544128688,
+            "se": 0.00014199814974884156,
+            "low": 0.00031299998090513934,
+            "high": 0.0008696327279205982
+          },
+          "policy_weighted_treated_events": 663.0,
+          "policy_weighted_control_events": 74.0
+        },
+        {
+          "depth": 0.45000071473497627,
+          "estimate": 0.0010280274003388358,
+          "se": 0.0002342590247575569,
+          "low": 0.0005688797118140243,
+          "high": 0.0014871750888636472,
+          "qini": {
+            "estimate": 0.0005569993561317231,
+            "se": 0.00013154308667302788,
+            "low": 0.0002991749062525885,
+            "high": 0.0008148238060108578
+          },
+          "policy_weighted_treated_events": 673.0,
+          "policy_weighted_control_events": 75.0
+        },
+        {
+          "depth": 0.5,
+          "estimate": 0.001013669457751702,
+          "se": 0.00023698781069471253,
+          "low": 0.0005491733487900654,
+          "high": 0.0014781655667133386,
+          "qini": {
+            "estimate": 0.0004903057954467208,
+            "se": 0.00012076588581791683,
+            "low": 0.00025360465924360376,
+            "high": 0.0007270069316498378
+          },
+          "policy_weighted_treated_events": 681.0,
+          "policy_weighted_control_events": 77.0
+        },
+        {
+          "depth": 0.5499992852650237,
+          "estimate": 0.0010022908879397533,
+          "se": 0.00023830360275569641,
+          "low": 0.0005352158265385883,
+          "high": 0.0014693659493409182,
+          "qini": {
+            "estimate": 0.0004265916075369034,
+            "se": 0.00010939154504247354,
+            "low": 0.0002121841792536553,
+            "high": 0.0006409990358201515
+          },
+          "policy_weighted_treated_events": 684.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.5999985705300475,
+          "estimate": 0.0010064904864581351,
+          "se": 0.00023834039400352035,
+          "low": 0.0005393433142112352,
+          "high": 0.001473637658705035,
+          "qini": {
+            "estimate": 0.0003784555879574167,
+            "se": 9.817243728163558e-05,
+            "low": 0.00018603761088541095,
+            "high": 0.0005708735650294224
+          },
+          "policy_weighted_treated_events": 685.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.6500014294699525,
+          "estimate": 0.0010106900849765166,
+          "se": 0.00023837717927096852,
+          "low": 0.0005434708136054183,
+          "high": 0.001477909356347615,
+          "qini": {
+            "estimate": 0.0003303158277147819,
+            "se": 8.716124918647124e-05,
+            "low": 0.00015947977930929827,
+            "high": 0.0005011518761202656
+          },
+          "policy_weighted_treated_events": 686.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.7000007147349763,
+          "estimate": 0.0010148896834948984,
+          "se": 0.00023841395856080916,
+          "low": 0.0005475983247157125,
+          "high": 0.0014821810422740844,
+          "qini": {
+            "estimate": 0.00028217980813529514,
+            "se": 7.644978055404574e-05,
+            "low": 0.0001323382382493655,
+            "high": 0.00043202137802122477
+          },
+          "policy_weighted_treated_events": 687.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.75,
+          "estimate": 0.0010190892820132798,
+          "se": 0.00023845073187580833,
+          "low": 0.0005517258475366955,
+          "high": 0.001486452716489864,
+          "qini": {
+            "estimate": 0.00023404378855580797,
+            "se": 6.618253781739707e-05,
+            "low": 0.0001043260144337097,
+            "high": 0.0003637615626779062
+          },
+          "policy_weighted_treated_events": 688.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.7999992852650237,
+          "estimate": 0.0010190892820132798,
+          "se": 0.00023845073187580833,
+          "low": 0.0005517258475366955,
+          "high": 0.001486452716489864,
+          "qini": {
+            "estimate": 0.00018170817045793936,
+            "se": 5.669534002395923e-05,
+            "low": 7.058530401097928e-05,
+            "high": 0.00029283103690489945
+          },
+          "policy_weighted_treated_events": 688.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.8499985705300475,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 0.00013357215087845262,
+            "se": 4.824756071212378e-05,
+            "low": 3.900693188269002e-05,
+            "high": 0.00022813736987421524
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.9000014294699525,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 8.12327921174364e-05,
+            "se": 4.175466787505333e-05,
+            "low": -6.063569176681236e-07,
+            "high": 0.00016307194115254092
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 0.9500007147349763,
+          "estimate": 0.0010232888805316617,
+          "se": 0.00023848749921872976,
+          "low": 0.0005558533820629514,
+          "high": 0.001490724379000372,
+          "qini": {
+            "estimate": 2.8897174019567803e-05,
+            "se": 3.808832510391504e-05,
+            "low": -4.575594318410567e-05,
+            "high": 0.00010355029122324128
+          },
+          "policy_weighted_treated_events": 689.0,
+          "policy_weighted_control_events": 78.0
+        },
+        {
+          "depth": 1.0,
+          "estimate": 0.0010467273246099625,
+          "se": 0.00024149500871980113,
+          "low": 0.0005733971075191522,
+          "high": 0.0015200575417007728,
+          "qini": {
+            "estimate": 0.0,
+            "se": 0.0,
+            "low": 0.0,
+            "high": 0.0
+          },
+          "policy_weighted_treated_events": 706.0,
+          "policy_weighted_control_events": 80.0
+        }
+      ],
+      "auqc": {
+        "estimate": 0.0004593660241851272,
+        "se": 0.0001060593997057771,
+        "low": 0.0002514896007618041,
+        "high": 0.0006672424476084503
+      }
+    }
+  },
+  "paired_uplift_difference_at_20pct": {
+    "random": {
+      "estimate": 0.0007915828141089533,
+      "se": 0.00018214614387603676,
+      "low": 0.00043457637211192124,
+      "high": 0.0011485892561059854
+    },
+    "propensity": {
+      "estimate": -5.5276085193364886e-05,
+      "se": 7.331457896216361e-05,
+      "low": -0.00019897265995920556,
+      "high": 8.842048957247579e-05
+    },
+    "baseline": {
+      "estimate": 0.0,
+      "se": 0.0,
+      "low": 0.0,
+      "high": 0.0
+    }
+  },
+  "interval_method": "95% normal intervals using feature-group cluster sandwich influence functions; fixed fitted models and observed ranking. Pointwise, not simultaneous. No model-training or transport uncertainty.",
+  "runtime_seconds": 19.71
+}

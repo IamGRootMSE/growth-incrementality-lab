@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Provenance · Growth Lab</title><link rel="stylesheet" href="style.css"><link rel="icon" href="favicon.svg"></head><body><a class="skip" href="#main">Skip to content</a><header><a class="brand" href="index.html"><span class="mark">↗</span> GROWTH LAB</a><nav aria-label="Main navigation"><a href="index.html#evidence">Evidence</a><a href="index.html#simulator">Budget lab</a><a href="methodology.html">Methodology</a><a href="https://github.com/IamGRootMSE/growth-incrementality-lab">Code ↗</a></nav></header><main id="main" class="document"><h1 id="data-provenance-dictionary">Data provenance &amp; dictionary</h1>
+<h2 id="authoritative-source">Authoritative source</h2>
+<p>Verified on 23 September 2026: <a href="https://ailab.criteo.com/criteo-uplift-prediction-dataset/">Criteo AI Lab dataset page</a> and the <a href="https://huggingface.co/datasets/criteo/criteo-uplift">official Criteo Hugging Face repository</a>. Download uses the official organization's <code>criteo-research-uplift-v2.1.csv.gz</code>. Its <a href="https://huggingface.co/datasets/criteo/criteo-uplift/blame/main/criteo-research-uplift-v2.1.csv.gz">Git LFS manifest</a> supplies the expected checksum.</p>
+<pre><code>URL: https://huggingface.co/datasets/criteo/criteo-uplift/resolve/main/criteo-research-uplift-v2.1.csv.gz
+SHA-256: 2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc
+Compressed size: 311,422,618 bytes
+Rows: 13,979,592
+</code></pre>
+<p>The download URL uses <code>main</code>, but the pipeline requires this exact content hash. A changed file fails closed. <code>python -m lab.acquire</code> downloads into ignored <code>data/raw/</code>; no login is required. The source page's older 25-million-row description and “11 features” prose refer to an earlier release and conflict with its enumerated fields. This project uses the revised 13,979,592-row file, verifies the physical 16-column header, and includes all 12 <code>f0</code>–<code>f11</code> features. It never combines versions.</p>
+<h2 id="license-and-attribution">License and attribution</h2>
+<p>The dataset is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution–NonCommercial–ShareAlike 4.0</a>. The original source includes a disclaimer of warranties. Data-derived aggregate results and reports here carry the same license, preserve attribution, and disclose modifications: Bernoulli sampling, feature-group partitioning, estimation and aggregation. No raw or row-level data is redistributed. Independent educational research; not sponsored or endorsed by Criteo. Separate original software is MIT licensed; that does not relicense the data. Obtain appropriate permission before commercial reuse outside the dataset license.</p>
+<p>Cite: Eustache Diemert, Artem Betlei, Christophe Renaudin and Massih-Reza Amini (2018), <em>A Large Scale Benchmark for Uplift Modeling</em>, AdKDD &amp; TargetAd workshop at KDD. <a href="https://openreview.net/pdf?id=Q83-QeTB9lS">Paper</a> · <a href="https://github.com/criteo-research/large-scale-ITE-UM-benchmark">Authors' benchmark code</a>.</p>
+<h2 id="construction-and-limitations">Construction and limitations</h2>
+<p>The release pools incrementality tests in which control users were withheld from advertising eligibility. Treatment does not guarantee exposure. Criteo reports nonuniform privacy subsampling that prevents reconstruction of original lift, plus anonymization and random projection of features. Its erratum identifies advertiser-related leakage in the first release and introduces a corrected version. The revised release is still a benchmark, not an unmodified production experiment.</p>
+<p>There are no user identifiers, advertiser identifiers, experiment probabilities, timestamps, geography, spending or revenue fields. We cannot verify assignment implementation, interference, outcome timing, cross-advertiser heterogeneity or longitudinal independence. Mean balance and assignment predictability do not prove randomization. Constant marginal assignment adjustment is a benchmark working assumption; it cannot undo unknown selection effects. No original-population ATE, individual causal truth, or production ROI is identified here.</p>
+<h2 id="data-dictionary">Data dictionary</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Meaning</th>
+<th>Modeling use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f0–f11</td>
+<td>dense float</td>
+<td>Anonymized, projected covariates; no business labels</td>
+<td>Only allowed predictors</td>
+</tr>
+<tr>
+<td>treatment</td>
+<td>binary</td>
+<td>Assignment: 1 eligible for advertising, 0 withheld</td>
+<td>Arm definition, not a predictor</td>
+</tr>
+<tr>
+<td>conversion</td>
+<td>binary</td>
+<td>Released conversion indicator</td>
+<td>Primary outcome</td>
+</tr>
+<tr>
+<td>visit</td>
+<td>binary</td>
+<td>Released visit indicator</td>
+<td>Descriptive audit only; excluded from predictors</td>
+</tr>
+<tr>
+<td>exposure</td>
+<td>binary</td>
+<td>Whether actually exposed</td>
+<td>Audit only; post-assignment, excluded</td>
+</tr>
+<tr>
+<td>row_id</td>
+<td>generated integer</td>
+<td>Zero-based position in immutable source</td>
+<td>Traceability and stable ordering; never a predictor</td>
+</tr>
+<tr>
+<td>group</td>
+<td>generated uint64</td>
+<td>Hash of the 12-feature vector</td>
+<td>Split isolation and variance clustering; not a user ID</td>
+</tr>
+<tr>
+<td>split</td>
+<td>generated label</td>
+<td>Train, validation or test</td>
+<td>Pipeline control only</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sampling-and-duplicate-handling">Sampling and duplicate handling</h2>
+<p>Seed 20260923 drives a 10% Bernoulli inclusion draw for every row in the entire source, processed in fixed 200,000-row chunks. The same inclusion probability applies to both treatment arms and all outcomes. It preserves the source allocation in expectation rather than forcing 50/50 or enriching conversions. Source and sample arm counts are in the aggregate results. Smoke mode uses 0.4% with the same seed; it is for execution checks and cannot replace portfolio evidence.</p>
+<p>Repeated released rows are not automatically deleted: anonymization can make distinct users identical. Exact duplicate counts and feature-duplicate counts are reported separately. All identical feature vectors share a split through a seeded BLAKE2b hash bucket (60% train, 20% validation, 20% test in expectation). Intervals cluster on these feature groups. This conservative grouping reduces leakage but cannot recover hidden user identities. Rates remain row-weighted, preserving the released population.</p>
+<h2 id="acquisition-receipt">Acquisition receipt</h2>
+<p>The executed source and sample hashes, full-source arm counts, sample probability and realized sample size are recorded in <a href="data/results.json">aggregate results</a>. Source schema and full row count are asserted in code. Raw downloads, cached samples, predictions and split memberships stay outside Git. All exported results are aggregate.</p></main><footer>Independent project · Criteo / Diemert et al. (2018) · <a href="provenance.html">Data provenance</a> · Data-derived reports: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. No endorsement.</footer></body></html>

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "SQL ATE equals published estimate",
+    "Evaluation row count matches manifest",
+    "SQL uplift: 0/5/20/50/100% agree",
+    "SQL baseline: 0/5/20/50/100% agree",
+    "SQL propensity: 0/5/20/50/100% agree",
+    "No feature-group split leakage",
+    "Unique source row positions",
+    "Curve endpoints and interval ordering valid"
+  ],
+  "source": "Local row-level test predictions; independent DuckDB recomputation"
+}
