@@ -131,6 +131,13 @@ def fixture(scenario, n=8000, seed=20261002):
     return rows
 
 
+def normalized_input_hash(rows):
+    """Hash currency at $0.0001 precision; analysis keeps full input precision."""
+    canonical = [dict(r, revenue=f"{r['revenue']:.4f}", margin=f"{r['margin']:.4f}")
+                 for r in rows]
+    return hashlib.sha256(json.dumps(canonical, sort_keys=True).encode()).hexdigest()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('outputs/experiment'))
@@ -141,6 +148,7 @@ def main():
         rows = fixture(scenario)
         result = evaluate(rows)
         result['input_sha256'] = hashlib.sha256(json.dumps(rows, sort_keys=True).encode()).hexdigest()
+        result['normalized_input_sha256'] = normalized_input_hash(rows)
         results[scenario] = result
     payload = dict(source='SYNTHETIC — invented independent portfolio scenarios', seed=20261002,
                    interval='Approximate simultaneous 95% family coverage via three Bonferroni Welch intervals',

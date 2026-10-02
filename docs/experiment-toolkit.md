@@ -14,6 +14,8 @@ python -m http.server 8000 --directory outputs/site
 
 Open `/experiment/index.html`. Alternatively open `outputs/experiment/index.html` directly; it has no external assets. Review `outputs/experiment/results.json` for exact estimates, source hashes, arm counts, assumptions and blocked-readout reasons. Seed 20261002 is fixed. The generator writes aggregates only; it never publishes user-level records.
 
+`input_sha256` records full-precision, runtime-specific inputs. `normalized_input_sha256` formats monetary inputs at $0.0001 precision for Windows/Linux reproducibility; analysis still uses full precision. CI compares normalized hashes exactly and numerical outputs within 1e-12 relative/absolute roundoff.
+
 On Windows if pytest's shared temporary directory is inaccessible, create `work/` and use `python -m pytest -q --basetemp=work/pytest-temp`.
 
 ## Decision contract
