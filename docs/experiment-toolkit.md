@@ -1,6 +1,6 @@
 # Experiment decision toolkit — review walkthrough
 
-Independent portfolio extension, October 2, 2026. **Unsupported designs.** It is separate from the existing public Criteo benchmark. No experiment was run for an employer.
+Independent portfolio extension, October 2, 2026. **All data in this extension is synthetic.** It is separate from the existing public Criteo benchmark. No experiment was run for an employer.
 
 ## Five-minute demo
 
