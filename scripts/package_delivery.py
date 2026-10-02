@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def package():
     report_dir=ROOT/'outputs/reports'
-    for name in ['interview-guide','methodology','provenance']:
+    for name in ['design-notes','methodology','provenance']:
         shutil.copy2(ROOT/'docs'/f'{name}.md',report_dir/f'{name}.md')
     shutil.copy2(ROOT/'README.md',report_dir/'project-readme.md')
     files=[]

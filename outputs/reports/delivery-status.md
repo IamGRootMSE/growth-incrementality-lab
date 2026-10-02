@@ -9,7 +9,7 @@
 - Independently reconciled overall and policy effects through DuckDB against local held-out prediction rows.
 - Built the static site and passed browser checks on seven routes at 1440px and 390px, 20 scenario reconciliations, keyboard controls, zero-cost and budget boundaries, invalid-input handling and no JavaScript exceptions.
 - Visually reviewed desktop and mobile presentation and the rendered one-page decision memo PDF.
-- Included CI and GitHub Pages workflows, setup documentation, data provenance/dictionary, analysis walkthrough, interview guide and three evidence-based resume bullets.
+- Included CI and GitHub Pages workflows, setup documentation, data provenance/dictionary, analysis walkthrough, design notes.
 
 ## Branch, commit and publication
 

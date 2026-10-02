@@ -1,6 +1,6 @@
 # Experiment decision toolkit — review walkthrough
 
-Independent portfolio extension, October 2, 2026. **All data in this extension is synthetic.** It is separate from the existing public Criteo benchmark. No experiment was run for Fullscript or an employer.
+Independent portfolio extension, October 2, 2026. **Unsupported designs.** It is separate from the existing public Criteo benchmark. No experiment was run for an employer.
 
 ## Five-minute demo
 
@@ -33,19 +33,17 @@ The demo fixes 8,000 users per arm **before generating outcomes**; power's 3,926
 
 The benefit and margin-harm scenarios share identical conversion and revenue draws. Their 5.60 percentage-point conversion lift is the same, but increasing intervention cost from $0.10 to $4.00 per assigned treated user reverses the margin decision. The null scenario is inconclusive. The unequal-count scenario is blocked by SRM. Exact intervals are in the generated report, not copied into a manually maintained slide.
 
-## What I would defend in an interview
+## Design rationale and limitations
 
-1. **Why all assigned users?** Conditioning on purchase or exposure after assignment can bias treatment comparisons. Buyer AOV is a diagnostic, not the primary causal revenue estimand.
-2. **Why reject a conversion win?** Incremental demand can fail to cover intervention expense. Discuss contribution margin and accepted loss before launch.
-3. **Why not use p > .05 to say “safe”?** Failure to detect harm is not evidence of noninferiority. A lower bound must clear a business tolerance.
-4. **What if practitioners affect several users?** Randomize/cluster at practitioner level, size using intracluster correlation, and consider interference. This independent-user engine is not valid unchanged.
-5. **How would you handle heavy tails or refunds?** Audit extreme orders, define refund lag and observation maturity before launch, then validate coverage with unit-level simulations or an appropriate bootstrap. Do not trim only after seeing an inconvenient result.
-6. **What is missing?** Sequential testing, factorial/multivariant designs, CUPED, clustered randomization, missing-outcome adjustment and guardrail power simulation. Adding these without correct design would weaken the portfolio.
+1. **Intention-to-treat population.** Conditioning on purchase or exposure after assignment can bias treatment comparisons. Buyer AOV is a diagnostic, not the primary causal revenue estimand.
+2. **Economic decision criterion.** Incremental demand can fail to cover intervention expense. Discuss contribution margin and accepted loss before launch.
+3. **Noninferiority evidence.** Failure to detect harm is not evidence of noninferiority. A lower bound must clear a business tolerance.
+4. **Clustered assignment.** Randomize/cluster at practitioner level, size using intracluster correlation, and consider interference. This independent-user engine is not valid unchanged.
+5. **Heavy tails and refunds.** Audit extreme orders, define refund lag and observation maturity before launch, then validate coverage with unit-level simulations or an appropriate bootstrap. Do not trim only after seeing an inconvenient result.
+6. **Unsupported designs.** Sequential testing, factorial/multivariant designs, CUPED, clustered randomization, missing-outcome adjustment and guardrail power simulation. These require a separately validated design.
 
 ## Verification and references
 
 Tests compare Welch limits against SciPy's independent `ttest_ind(equal_var=False).confidence_interval`, test all four decisions, power direction, immature data, duplicate users, nonfinite values, zero variance and ITT arithmetic. Desktop/mobile browser checks verify report values and evidence links.
 
 [SciPy Welch t-test documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html). Original code and newly generated synthetic aggregates are covered by the repository's MIT software terms; Criteo-derived materials retain their existing CC BY-NC-SA attribution.
-
-**Defensible resume wording:** Extended an independent Python experimentation portfolio with power planning, fixed-horizon intention-to-treat readouts, allocation/follow-up checks, and revenue/contribution-margin decision gates; validated known synthetic failure cases against statistical reference calculations.

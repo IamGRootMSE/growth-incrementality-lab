@@ -115,7 +115,7 @@ def evaluate(rows, plan=Plan()):
 
 
 def fixture(scenario, n=8000, seed=20261002):
-    """Invented commerce users, not Criteo or Fullscript records."""
+    """Invented commerce users, not Criteo or employer records."""
     if scenario not in ('benefit', 'margin_harm', 'null', 'srm'):
         raise ValueError('Unknown scenario')
     rng = np.random.default_rng(seed)

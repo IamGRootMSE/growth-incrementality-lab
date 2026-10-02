@@ -49,15 +49,6 @@ Criteo's privacy subsampling changes incrementality. Projected features, pooled 
 Source: Criteo AI Lab; Diemert et al. (2018), *A Large Scale Benchmark for Uplift Modeling*. Data-derived report: CC BY-NC-SA 4.0. No Criteo endorsement.
 '''
     (report_dir / 'decision-memo.md').write_text(memo, encoding='utf-8')
-    bullets = f'''# Defensible resume bullets
-
-Label this work **Independent project — Growth Incrementality & Targeting Lab**. These bullets describe completed benchmark research, not production impact.
-
-- Built a reproducible Python/DuckDB causal-analytics pipeline on a {f(r['provenance']['sample_rows'])}-user sample of Criteo's public uplift benchmark, with hashed data provenance, feature-group leakage controls and a {f(r['splits']['test']['rows'])}-user final holdout.
-- Compared randomized, conversion-propensity and linear/boosted uplift policies using unequal-assignment-adjusted estimators and clustered uncertainty; measured {u['estimate']*1000:.2f} incremental conversions per 1,000 eligible users at 20% uplift reach, while documenting no established advantage over propensity targeting.
-- Developed a responsive static portfolio and interactive budget simulator backed by precomputed evaluation results, including pointwise confidence intervals, explicit hypothetical economics, reproducible tests and a GitHub Pages deployment workflow.
-'''
-    (report_dir / 'resume-bullets.md').write_text(bullets, encoding='utf-8')
     walkthrough = f'''# Analysis walkthrough
 
 This is a readable companion to the executable pipeline, with results from the acquired Criteo v2.1 file. It is not a synthetic example. Run commands from the repository root after installing `requirements.lock` in Python 3.12.
@@ -151,8 +142,8 @@ def build(destination=None):
     memo_pdf = report_dir/'decision-memo.pdf'
     if memo_pdf.exists():
         shutil.copy2(memo_pdf, out/'decision-memo.pdf')
-    documents = [(ROOT/'docs'/f'{name}.md',name) for name in ['methodology','provenance','interview-guide']]
-    documents += [(report_dir/f'{name}.md',name) for name in ['decision-memo','walkthrough','resume-bullets']]
+    documents = [(ROOT/'docs'/f'{name}.md',name) for name in ['methodology','provenance','design-notes']]
+    documents += [(report_dir/f'{name}.md',name) for name in ['decision-memo','walkthrough']]
     for src,name in documents:
         (out/f'{name}.html').write_text(page(name.replace('-',' ').title(),src.read_text(encoding='utf-8')),encoding='utf-8')
     (out/'.nojekyll').write_text('')

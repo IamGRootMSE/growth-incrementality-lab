@@ -76,7 +76,7 @@ python scripts/browser_check.py
 - Pipeline tests cover strict feature exclusion, duplicate-group split isolation, deterministic partitions, train/validate/predict integration and committed output integrity.
 - Build tests resolve all internal links/anchors and ensure empirical data powers the static site.
 - Independent DuckDB calculations reconcile the overall contrast and 0/5/20/50/100% policy estimates against local held-out prediction rows.
-- Browser tests reconcile 20 simulator scenarios against Python arithmetic, check budget boundaries, zero cost, invalid inputs, keyboard changes, seven pages at desktop/mobile widths and JavaScript exceptions.
+- Browser tests reconcile 20 simulator scenarios against Python arithmetic, check budget boundaries, zero cost, invalid inputs, keyboard changes, six pages at desktop/mobile widths and JavaScript exceptions.
 
 See [`outputs/analysis/validation.json`](outputs/analysis/validation.json) and [`outputs/analysis/browser-validation.json`](outputs/analysis/browser-validation.json) for executed receipts. CI runs tests, static build and browser checks without downloading raw data. It uses committed aggregates for presentation tests and explicit synthetic fixtures for unit/integration tests; it does not claim to rerun the empirical analysis.
 
@@ -110,9 +110,9 @@ Official Criteo v2.1 CSV.gz (ignored raw data; SHA-256 verified)
 | `site/` | Authored HTML, CSS, accessible SVG charts and scenario calculator |
 | `scripts/` | Static build, independent reconciliation, browser QA and PDF memo |
 | `tests/` | Estimator, leakage, pipeline and static-build tests |
-| `docs/` | Methodology, provenance/dictionary and interview guide |
+| `docs/` | Methodology, provenance/dictionary and design notes |
 | `outputs/analysis/` | Aggregate results, model selection and validation receipts |
-| `outputs/reports/` | Decision memo, analysis walkthrough and resume bullets |
+| `outputs/reports/` | Decision memo, analysis walkthrough |
 | `.github/workflows/` | CI and Pages deployment |
 
 The site contains no individual records, model-serving endpoint, analytics trackers, cookies or secrets. Raw data, sampled data, held-out predictions, split membership, local environments and intermediate files are ignored by Git. Aggregate results are intentionally versioned so Pages builds do not need source-data downloads.
@@ -133,8 +133,7 @@ The simulator's cost per treated user and value per incremental conversion are h
 - [Methodology](docs/methodology.md) and [data provenance/dictionary](docs/provenance.md)
 - [Executed analysis walkthrough](outputs/reports/walkthrough.md)
 - [One-page decision memo PDF](outputs/reports/decision-memo.pdf) and [Markdown](outputs/reports/decision-memo.md)
-- [Interview guide](docs/interview-guide.md)
-- [Three defensible resume bullets](outputs/reports/resume-bullets.md)
+- [Design notes](docs/design-notes.md)
 
 ## GitHub Pages setup
 
