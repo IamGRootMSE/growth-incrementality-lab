@@ -46,3 +46,14 @@ def test_readout_integrity_and_intention_to_treat():
 def test_zero_variance_rejected():
     with pytest.raises(ValueError, match='variance'):
         contrast([1,1], [0,0], .05)
+
+
+def test_generator_preserves_followup_gate_and_valid_readout():
+    rows = fixture('benefit')
+    assert evaluate(iter(rows)) == evaluate(rows)
+    rows[-1]['followup_days'] = 27
+    result = evaluate(r for r in rows)
+    assert result == evaluate(rows)
+    assert result['decision'] == 'INVALID'
+    assert result['blockers'] == ['incomplete_followup']
+    assert result['metrics'] == {}

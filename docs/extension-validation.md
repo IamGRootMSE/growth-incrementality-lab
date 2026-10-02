@@ -10,3 +10,9 @@ Executed on RONIN with Python 3.12.14 in a new isolated environment installed fr
 - `python scripts/validate_outputs.py`: passed independent DuckDB reconciliation of overall and policy effects, feature-group isolation, unique source positions, interval ordering and endpoint identities.
 
 Raw/cache files remain ignored by Git. New experiment figures are synthetic; the Criteo benchmark remains separately attributed. Local validation is distinct from GitHub Actions status; review the PR checks for the published commit.
+
+## Follow-up defensive review
+
+A one-shot iterator previously bypassed maturity checking because the input had already been consumed. The failure was reproduced (immature list: INVALID; same rows as generator: SHIP_CANDIDATE). The gate now reads the validated arm collections. A regression verifies list/generator equivalence for mature and immature data, including empty metrics for blocked results. The published list-based fixture results are unchanged.
+
+The full updated suite passes **26 tests**. CI and the future Pages build regenerate the experiment into a separate directory, compare against the committed JSON, and only then copy regenerated artifacts into the build. Snapshot comparisons require exact structure, strings, integer counts and input hashes; float comparisons permit only 1e-12 relative/absolute roundoff. These extension snapshots contain no runtime, timestamp or platform metadata. Comparator tests reject material numeric changes, schema drift, boolean/count substitutions, changed decisions, array-length changes and nonfinite values.

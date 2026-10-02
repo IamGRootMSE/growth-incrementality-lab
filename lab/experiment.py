@@ -88,7 +88,8 @@ def evaluate(rows, plan=Plan()):
         blockers.append('sample_ratio_mismatch')
     if min(counts) < plan.per_arm:
         blockers.append('planned_sample_not_reached')
-    if any(r['followup_days'] < plan.followup_days for r in rows):
+    # The original input may be a one-shot iterator; reuse validated arm rows.
+    if any(r['followup_days'] < plan.followup_days for arm in arms.values() for r in arm):
         blockers.append('incomplete_followup')
     if any(min(sum(r['converted'] for r in arm),
                len(arm)-sum(r['converted'] for r in arm)) < 20 for arm in arms.values()):
