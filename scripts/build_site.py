@@ -139,6 +139,7 @@ def build(destination=None):
         raise ValueError('Portfolio publishing requires empirical full-analysis results')
     out = Path(destination) if destination else ROOT / 'outputs/site'
     out.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(ROOT/'outputs/experiment', out/'experiment', dirs_exist_ok=True)
     for p in (ROOT/'site').iterdir():
         if p.is_file():
             shutil.copy2(p, out / p.name)

@@ -1,0 +1,189 @@
+{
+  "source": "SYNTHETIC \u2014 invented independent portfolio scenarios",
+  "seed": 20261002,
+  "interval": "Approximate simultaneous 95% family coverage via three Bonferroni Welch intervals",
+  "scenarios": {
+    "benefit": {
+      "plan": {
+        "baseline": 0.2,
+        "absolute_mde": 0.03,
+        "alpha": 0.05,
+        "power": 0.8,
+        "followup_days": 28,
+        "daily_eligible": 1000,
+        "revenue_tolerance": 0.5,
+        "margin_tolerance": 0.25,
+        "srm_alpha": 0.001
+      },
+      "planned_per_arm": 3926,
+      "enrollment_days": 14,
+      "counts": [
+        8000,
+        8000
+      ],
+      "srm_p": 1.0,
+      "blockers": [],
+      "decision": "SHIP_CANDIDATE",
+      "metrics": {
+        "converted": {
+          "estimate": 0.055999999999999994,
+          "low": 0.040298910587608934,
+          "high": 0.07170108941239106,
+          "se": 0.0065578766999770215,
+          "df": 15868.121835608652,
+          "control_mean": 0.194125,
+          "treatment_mean": 0.250125
+        },
+        "revenue": {
+          "estimate": 4.411807433794996,
+          "low": 3.120596868466702,
+          "high": 5.70301799912329,
+          "se": 0.539300045874977,
+          "df": 15842.705659771605,
+          "control_mean": 15.040073477184547,
+          "treatment_mean": 19.451880910979543
+        },
+        "margin": {
+          "estimate": 1.6647229735179998,
+          "low": 1.1482387473866824,
+          "high": 2.181207199649317,
+          "se": 0.21572001834999077,
+          "df": 15842.705659771604,
+          "control_mean": 6.016029390873819,
+          "treatment_mean": 7.680752364391819
+        }
+      },
+      "input_sha256": "cfd460e516f0e7e75ff70512212cc389f228c8bfb512cfe783f2b3074f166550"
+    },
+    "margin_harm": {
+      "plan": {
+        "baseline": 0.2,
+        "absolute_mde": 0.03,
+        "alpha": 0.05,
+        "power": 0.8,
+        "followup_days": 28,
+        "daily_eligible": 1000,
+        "revenue_tolerance": 0.5,
+        "margin_tolerance": 0.25,
+        "srm_alpha": 0.001
+      },
+      "planned_per_arm": 3926,
+      "enrollment_days": 14,
+      "counts": [
+        8000,
+        8000
+      ],
+      "srm_p": 1.0,
+      "blockers": [],
+      "decision": "DO_NOT_SHIP_HARM",
+      "metrics": {
+        "converted": {
+          "estimate": 0.055999999999999994,
+          "low": 0.040298910587608934,
+          "high": 0.07170108941239106,
+          "se": 0.0065578766999770215,
+          "df": 15868.121835608652,
+          "control_mean": 0.194125,
+          "treatment_mean": 0.250125
+        },
+        "revenue": {
+          "estimate": 4.411807433794996,
+          "low": 3.120596868466702,
+          "high": 5.70301799912329,
+          "se": 0.539300045874977,
+          "df": 15842.705659771605,
+          "control_mean": 15.040073477184547,
+          "treatment_mean": 19.451880910979543
+        },
+        "margin": {
+          "estimate": -2.2352770264820006,
+          "low": -2.751761252613318,
+          "high": -1.7187928003506832,
+          "se": 0.21572001834999077,
+          "df": 15842.7056597716,
+          "control_mean": 6.016029390873819,
+          "treatment_mean": 3.7807523643918186
+        }
+      },
+      "input_sha256": "fb886297bd382b9e534727f9952c77aae0f3c8ba981bc8513de9f6d31ea569b3"
+    },
+    "null": {
+      "plan": {
+        "baseline": 0.2,
+        "absolute_mde": 0.03,
+        "alpha": 0.05,
+        "power": 0.8,
+        "followup_days": 28,
+        "daily_eligible": 1000,
+        "revenue_tolerance": 0.5,
+        "margin_tolerance": 0.25,
+        "srm_alpha": 0.001
+      },
+      "planned_per_arm": 3926,
+      "enrollment_days": 14,
+      "counts": [
+        8000,
+        8000
+      ],
+      "srm_p": 1.0,
+      "blockers": [],
+      "decision": "INCONCLUSIVE",
+      "metrics": {
+        "converted": {
+          "estimate": -0.0011249999999999871,
+          "low": -0.016082494234320933,
+          "high": 0.013832494234320957,
+          "se": 0.006247304550655713,
+          "df": 15997.921968433382,
+          "control_mean": 0.194125,
+          "treatment_mean": 0.193
+        },
+        "revenue": {
+          "estimate": -0.02665552622422318,
+          "low": -1.2536748930401345,
+          "high": 1.200363840591688,
+          "se": 0.5124898297625977,
+          "df": 15997.9174143373,
+          "control_mean": 15.040073477184547,
+          "treatment_mean": 15.013417950960324
+        },
+        "margin": {
+          "estimate": -0.11066221048968927,
+          "low": -0.6014699572160538,
+          "high": 0.3801455362366753,
+          "se": 0.2049959319050391,
+          "df": 15997.917414337297,
+          "control_mean": 6.016029390873819,
+          "treatment_mean": 5.90536718038413
+        }
+      },
+      "input_sha256": "ff2b1abc450ea6d8a67459aabe0596ff4b86c64b7c8dbe233a37203900418ae7"
+    },
+    "srm": {
+      "plan": {
+        "baseline": 0.2,
+        "absolute_mde": 0.03,
+        "alpha": 0.05,
+        "power": 0.8,
+        "followup_days": 28,
+        "daily_eligible": 1000,
+        "revenue_tolerance": 0.5,
+        "margin_tolerance": 0.25,
+        "srm_alpha": 0.001
+      },
+      "planned_per_arm": 3926,
+      "enrollment_days": 14,
+      "counts": [
+        8000,
+        5200
+      ],
+      "srm_p": 3.483695213039216e-131,
+      "blockers": [
+        "sample_ratio_mismatch"
+      ],
+      "decision": "INVALID",
+      "metrics": {},
+      "input_sha256": "464bca6cb3b994b1fc444875b6c9b14f076d87b6c93e546822b7ccc07f263366"
+    }
+  }
+}

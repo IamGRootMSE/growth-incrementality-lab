@@ -1424,5 +1424,5 @@
     }
   },
   "interval_method": "95% normal intervals using feature-group cluster sandwich influence functions; fixed fitted models and observed ranking. Pointwise, not simultaneous. No model-training or transport uncertainty.",
-  "runtime_seconds": 19.71
+  "runtime_seconds": 21.39
 }

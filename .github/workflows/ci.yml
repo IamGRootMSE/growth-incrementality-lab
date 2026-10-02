@@ -16,9 +16,11 @@ jobs:
           cache: pip
       - run: pip install -r requirements.lock
       - run: python -m pytest -q
+      - run: python -m lab.experiment
       - run: python scripts/build_site.py
       - run: python -m playwright install --with-deps chromium
       - run: python scripts/browser_check.py
+      - run: python scripts/check_experiment_report.py
       - uses: actions/upload-artifact@v4
         with:
           name: verified-static-site
