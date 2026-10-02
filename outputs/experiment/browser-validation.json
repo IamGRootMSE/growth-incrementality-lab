@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "viewports": [
+    1440,
+    390
+  ],
+  "checks": [
+    "synthetic label",
+    "all decisions and estimates match JSON",
+    "no page overflow",
+    "evidence link",
+    "no JS errors"
+  ]
+}

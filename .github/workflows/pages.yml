@@ -20,6 +20,9 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.lock
       - run: python -m pytest -q
+      - run: python -m lab.experiment --output work/experiment-check
+      - run: python scripts/check_snapshot.py outputs/experiment/results.json work/experiment-check/results.json
+      - run: cp work/experiment-check/* outputs/experiment/
       - run: python scripts/build_site.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

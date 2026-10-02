@@ -2,6 +2,14 @@
 
 **Independent portfolio project · experimentation, causal inference and targeting decisions.**
 
+## New: experiment decision toolkit
+
+A separate **synthetic** extension turns experiment design into a revenue-aware decision: power planning, intention-to-treat readouts, sample-ratio and follow-up gates, simultaneous uncertainty, and revenue/contribution-margin noninferiority guardrails. Four runnable cases demonstrate a benefit, a conversion win with margin harm, an inconclusive null, and invalid allocation. It does not alter the Criteo results below.
+
+Run `python -m lab.experiment`, then open [`outputs/experiment/index.html`](outputs/experiment/index.html). See the [technical walkthrough](docs/experiment-toolkit.md) and [executed aggregate evidence](outputs/experiment/results.json). Tests and browser review run in CI.
+
+![Synthetic experiment decisions](outputs/experiment/desktop.png)
+
 Which users should receive advertising because it changes their likelihood of converting, and how does the decision change with a budget? This project complements descriptive payments analytics with intervention evaluation. It uses the official Criteo uplift v2.1 dataset, a reproducible sample, linear and boosted T-learners, and a static decision tool. No paid API or backend is required.
 
 ## Actual findings
