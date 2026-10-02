@@ -58,7 +58,7 @@ def run():
             checks.append('Keyboard targeting-depth interaction')
             for width,height,name in [(1440,1050,'desktop'),(390,844,'mobile')]:
                 page.set_viewport_size({'width':width,'height':height})
-                for route in ['index.html','methodology.html','provenance.html','decision-memo.html','walkthrough.html','interview-guide.html','resume-bullets.html']:
+                for route in ['index.html','methodology.html','provenance.html','decision-memo.html','walkthrough.html','design-notes.html']:
                     response=page.goto(url+'/'+route,wait_until='networkidle')
                     assert response.status==200
                     overflow=page.evaluate('''() => [...document.querySelectorAll('body *')].filter(e=>e.getBoundingClientRect().right>innerWidth+1).map(e=>({tag:e.tagName,id:e.id,class:e.className,right:e.getBoundingClientRect().right})).slice(0,20)''')
@@ -70,7 +70,7 @@ def run():
                     page.screenshot(path=str(output/'mobile.png'),full_page=True)
                     page.screenshot(path=str(output/'mobile-viewport.png'))
                     page.locator('#targeting').screenshot(path=str(output/'mobile-targeting.png'))
-            checks.append('Seven routes at 1440px and 390px; no page-level overflow')
+            checks.append('Six routes at 1440px and 390px; no page-level overflow')
             page.goto(url+'/decision-memo.html',wait_until='networkidle')
             page.set_viewport_size({'width':900,'height':1200})
             page.screenshot(path=str(output/'decision-memo.png'),full_page=True)

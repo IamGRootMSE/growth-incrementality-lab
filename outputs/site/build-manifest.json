@@ -1,16 +1,15 @@
 {
   ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "app.js": "062d46da7c7351ea94f371f137eabcdd87f11f436979ae05fc2e1051a67944fa",
+  "app.js": "b349556ae03ed898553fd31d4cda0387d45f86f467991ddb3655a18bbb538b5b",
   "data/results.js": "44e4c0d9266720ccc59d5e26c3f917a8ab968c2b3a4825f7a0d7cd86cb275b00",
   "data/results.json": "de69f8b280fd2fd62252b0d8564976e2b285bae6ff39ce830779400548b51cf6",
   "decision-memo.html": "5cf6beda750d3d549774bae2899a54d2a1ddac3ebe336e1997bff8ddd62962c4",
-  "decision-memo.pdf": "0017e59d14a19be36928ce7a51e20c8d76e92a0025e4c94ca94541b935db2390",
-  "favicon.svg": "3b10ee730a35f9d8295c4c69846569309af08d78c337a21ea8899abdef776b13",
-  "index.html": "e8a4c32d9e55511f3bc967613cb47dd98faf3232ad8b46c8808ff9bd2584d39d",
-  "interview-guide.html": "b9d8bb22911b102092fff09784c9f89d45cb0275047c7f868fbe371c15f7c00f",
+  "decision-memo.pdf": "9a23b9e1efd65415ebf8cbaa9a9420b4cd1f91c1c8d15d788a4c8f73abf62784",
+  "design-notes.html": "2b1f94b7aa7e726f02582524fa686ba4f640111bc80c5cc87dc84f4820509165",
+  "favicon.svg": "d6dc71670205a354fb3eb96f10d967912eb544fc30f5882fd38e9fcd7a3034c3",
+  "index.html": "172f9cfaa0bbe21f988f7b72eff829f71e08ca54cf738e0f9631bb59cb09e29c",
   "methodology.html": "d3cf5af11391100edce4d7db99327c6716e833cf03a65b327e35eede0dec2c61",
   "provenance.html": "7a50cebad662fe4b5db7ed41a5678120d86dbb98882c0d73139afc2e5edda77d",
-  "resume-bullets.html": "dfc2104561d833c53ee9ccb501b13e03336d07be55774c9a8d034f7b9b87f39d",
-  "style.css": "1330869817ae6080edc83d61917fdab9b165fe64b47d031051d2edd49fdaef58",
+  "style.css": "7c71e86d6ce22b51ba9eb8954377360f096b0009427a153a363bd5fd496f6268",
   "walkthrough.html": "ee55ddfe216f78b0ad92fe1c7b9db6130bb1f4a9dde2dfbc705e8f4b75d504d0"
 }

@@ -4,7 +4,7 @@
     "20 browser/Python policy-depth scenario reconciliations",
     "Budget boundary, zero cost, invalid audience and stale-output clearing",
     "Keyboard targeting-depth interaction",
-    "Seven routes at 1440px and 390px; no page-level overflow",
+    "Six routes at 1440px and 390px; no page-level overflow",
     "No browser JavaScript exceptions"
   ],
   "screenshots": [
